@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages) {
     this.title = title;
@@ -7,6 +7,11 @@ function Book(title, author, pages) {
     this.get_description = () => {
         console.log(`Book titled ${this.title} has ${this.pages} pages.`)
     }
+    this.read = false;
+}
+
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
 }
 
 function addBookToLibrary(book) {
@@ -15,8 +20,8 @@ function addBookToLibrary(book) {
 
 // Add initial books to list
 let myBook = new Book('Lord of the Rings', 'JRR Tolkien', 250);
-let myBook2 = new Book('Lord of the Rings', 'JRR Tolkien', 250);
-let myBook3 = new Book('Lord of the Rings', 'JRR Tolkien', 250); 
+let myBook2 = new Book('Of Mice and Men', 'John Steinbeck', 450);
+let myBook3 = new Book("Hitchiker's Guide to the Galaxy", 'Stephen Hawking', 333); 
 
 addBookToLibrary(myBook);
 addBookToLibrary(myBook2);
@@ -49,7 +54,7 @@ function addUserBookToLibrary(event) {
     document.querySelector('.dialog-box').close();
 }
 
-function createCard(book) {
+function createCard(book, i) {
 
     // Create card    
     let newCard = document.createElement('div');
@@ -73,7 +78,7 @@ function createCard(book) {
     // Create pages line
     let pagesLine = document.createElement('p');
     pagesLine.classList.add('pages');
-    pagesLine.innerText = `${book.pages} pages.`
+    pagesLine.innerText = `${book.pages} pages`
 
     // Create body div
     let cardBody = document.createElement('div');
@@ -83,6 +88,42 @@ function createCard(book) {
     let deleteIcon = document.createElement('img');
     deleteIcon.classList.add('delete');
     deleteIcon.setAttribute('src', 'close.svg');
+    deleteIcon.setAttribute('data-attribute', i);
+
+    deleteIcon.addEventListener('click', e => {
+        let index = e.target.dataset.attribute;
+        myLibrary.splice(index, 1);
+        refreshBooks();
+    })
+
+    // Add read corner sticker
+    let readSticker = document.createElement('div');
+    readSticker.classList.add('sticker');
+    let stickerText = document.createElement('p');
+    stickerText.classList.add('sticker-text');
+
+    if (book.read) {
+        readSticker.classList.add('read');
+        stickerText.innerText = 'Read';
+    } else {
+        readSticker.classList.add('unread');
+        stickerText.innerText = 'Unread';
+    }
+
+    let changeRead = document.createElement('img');
+    changeRead.classList.add('change-read');
+    changeRead.setAttribute('src', 'reload.svg')
+    changeRead.setAttribute('data-attribute', i);
+
+    changeRead.addEventListener('click', e => {
+        let index = e.target.dataset.attribute;
+        myLibrary[index].toggleRead();
+        refreshBooks();
+    })
+
+    readSticker.appendChild(stickerText);
+    readSticker.appendChild(changeRead);
+    
 
     // Add to card body
     cardBody.appendChild(titleLine);
@@ -93,8 +134,13 @@ function createCard(book) {
     newCard.appendChild(img);
     newCard.appendChild(cardBody);
     newCard.appendChild(deleteIcon);
+    newCard.appendChild(readSticker);
 
     return newCard;
+}
+
+function deleteCard(e) {
+    document.qu
 }
 
 function refreshBooks() {
@@ -102,18 +148,26 @@ function refreshBooks() {
     container.innerHTML='';
 
     for (let i = 0; i < myLibrary.length; i++) {
-        container.appendChild(createCard(myLibrary[i]));
+        let card = createCard(myLibrary[i], i);
+        container.appendChild(card);
     }
 }
 
-const button = document.querySelector('#submit-btn');
+refreshBooks();
 
+// Button to add new book
+const button = document.querySelector('#submit-btn');
+button.addEventListener('click', addUserBookToLibrary);
+
+// Button to create popup
 const popupBtn = document.querySelector('#popup-btn')
 popupBtn.addEventListener('click', e=> {
     const popup = document.querySelector('.dialog-box');
     popup.showModal();
 })
 
-button.addEventListener('click', addUserBookToLibrary);
+// Button to toggle read status
+let changeReadBtns = document.querySelectorAll('.change-read');
 
-refreshBooks();
+
+

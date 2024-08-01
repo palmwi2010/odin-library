@@ -9,7 +9,7 @@ body {
     padding: 12px 24px;
     flex-direction: column;
     gap:16px;
-    width: min(80%, 1200px);
+    width: min(100%, 1600px);
 }
 
 .add-line {
@@ -51,7 +51,7 @@ body {
 
 .card-area {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap:32px;
     margin-top: 16px;
     padding-top: 16px;
@@ -66,6 +66,7 @@ body {
     padding: 16px 24px;
     justify-content: left;
     border-radius: 20px;
+    position: relative;
 }
 
 .book-img {
@@ -101,4 +102,39 @@ body {
 .dialog-box::backdrop {
     background-color: #475569;
     opacity: 0.5;
+}
+
+.sticker {
+    position: absolute;
+    top:0;
+    right:0;
+    font-size: 12px;
+    padding: 3px 6px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.1ch;
+    font-weight: 700;
+    width: 120px;
+    justify-content: space-between;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.change-read {
+    width: 18px;
+    height: 18px;
+    filter: invert(100);
+}
+
+.change-read:hover {
+    cursor: pointer;
+}
+
+.read {
+    background-color: #65a30d;
+}
+
+.unread {
+    background-color: #eab308;
 }
