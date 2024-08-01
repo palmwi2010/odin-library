@@ -44,6 +44,9 @@ function addUserBookToLibrary(event) {
     document.querySelector('#author').value = '';
     document.querySelector('#pages').value = '';
     document.querySelector('#title').focus();
+
+    // Close modal
+    document.querySelector('.dialog-box').close();
 }
 
 function createCard(book) {
@@ -98,6 +101,13 @@ function refreshBooks() {
 }
 
 const button = document.querySelector('#submit-btn');
+
+const popupBtn = document.querySelector('#popup-btn')
+popupBtn.addEventListener('click', e=> {
+    const popup = document.querySelector('.dialog-box');
+    popup.showModal();
+})
+
 button.addEventListener('click', addUserBookToLibrary);
 
 refreshBooks();

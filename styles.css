@@ -6,16 +6,10 @@
 }
 
 body {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.left, .right {
     padding: 12px 24px;
-    display: flex;
     flex-direction: column;
     gap:16px;
-    width: 80%;
+    width: min(80%, 1200px);
 }
 
 .add-line {
@@ -56,11 +50,12 @@ body {
 /* Book card */
 
 .card-area {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap:32px;
-    margin-top: 8px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 2px solid gray;
 }
 
 .card-body {
@@ -76,4 +71,24 @@ body {
 .book-img {
     width:70px;
     height:70px;
+}
+
+#popup-btn {
+    margin-top: 24px;
+}
+
+.dialog-box {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    padding:40px 80px;
+    transform: translate(-50%, -50%);
+    width: clamp(400px, 50%, 800px);
+    border-radius: 25px;
+    border: 2px solid gray;   
+}
+
+.dialog-box::backdrop {
+    background-color: #475569;
+    opacity: 0.5;
 }
