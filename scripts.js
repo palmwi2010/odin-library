@@ -79,6 +79,11 @@ function createCard(book) {
     let cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
 
+    // Add delete icon
+    let deleteIcon = document.createElement('img');
+    deleteIcon.classList.add('delete');
+    deleteIcon.setAttribute('src', 'close.svg');
+
     // Add to card body
     cardBody.appendChild(titleLine);
     cardBody.appendChild(authorLine);
@@ -87,6 +92,7 @@ function createCard(book) {
     // Add to card div
     newCard.appendChild(img);
     newCard.appendChild(cardBody);
+    newCard.appendChild(deleteIcon);
 
     return newCard;
 }

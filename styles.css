@@ -51,26 +51,36 @@ body {
 
 .card-area {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap:32px;
     margin-top: 16px;
     padding-top: 16px;
     border-top: 2px solid gray;
 }
 
-.card-body {
-    width:200px;
-}
-
 .card {
     display: flex;
     gap:32px;
     align-items: center;
+    background-color: #e5e7eb;
+    padding: 16px 24px;
+    justify-content: left;
+    border-radius: 20px;
 }
 
 .book-img {
     width:70px;
     height:70px;
+}
+
+.delete {
+    margin-left: auto;
+    width: 35px;
+    height: 35px;
+}
+
+.delete:hover {
+    cursor: pointer;
 }
 
 #popup-btn {
