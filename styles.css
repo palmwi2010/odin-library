@@ -21,17 +21,20 @@ body {
 .add-line {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap:24px;
+    margin-top: 12px;
 }
 
 .add-line input {
     padding: 12px 6px;
+    border-radius: 10px;
+    background-color: #f1f5f9;
+    border: none;
 }
 
 .add-line input:focus {
-    box-shadow: 4px 4px 10px 0 gray;
+    box-shadow: 4px 4px 4px 0 gray;
     outline: none;
-    border: none;
 }
 
 .btn {

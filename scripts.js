@@ -23,19 +23,27 @@ addBookToLibrary(myBook2);
 addBookToLibrary(myBook3);
 
 // Function to add user specified books to list
-function addUserBookToLibrary() {
+function addUserBookToLibrary(event) {
+
+    // Prevent form submission
+    event.preventDefault();
+
+    // Get content
     let title = document.querySelector('#title').value;
     let author = document.querySelector('#author').value;
     let pages = document.querySelector('#pages').value;
-    console.log(title);
-    console.log(author);
-    console.log(pages);
 
     if (title != '' && author != '' && pages != '') {
         let newBook = new Book(title, author, pages);
         addBookToLibrary(newBook);
         refreshBooks();
     }
+
+    // Clear text
+    document.querySelector('#title').value = '';
+    document.querySelector('#author').value = '';
+    document.querySelector('#pages').value = '';
+    document.querySelector('#title').focus();
 }
 
 function createCard(book) {
