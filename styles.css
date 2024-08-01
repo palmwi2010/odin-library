@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Arial';
+}
+
+body {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.left, .right {
+    padding: 12px 24px;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    width: 80%;
+}
+
+.add-line {
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.add-line input {
+    padding: 12px 6px;
+}
+
+.add-line input:focus {
+    box-shadow: 4px 4px 10px 0 gray;
+    outline: none;
+    border: none;
+}
+
+.btn {
+    padding: 16px 32px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    background-color: #0ea5e9;
+    color: white;
+    font-weight: 700;
+    margin-top: 12px;
+    box-shadow: 6px 6px 10px 0 gray;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+/* Book card */
+
+.card-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:32px;
+    margin-top: 8px;
+}
+
+.card-body {
+    width:200px;
+}
+
+.card {
+    display: flex;
+    gap:32px;
+    align-items: center;
+}
+
+.book-img {
+    width:70px;
+    height:70px;
+}

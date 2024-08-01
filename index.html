@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <script src = "scripts.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Roboto font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+<body>
+    <div class="left">
+        <h1>Welcome to my library</h1>
+        <h3>Add a new book here</h3>
+        <form onsubmit="return false;"> 
+            <div class="add-line">
+                <input type="text" placeholder="Book title" id="title">
+                <input type="text" placeholder="Author" id="author">
+                <input type="number" placeholder="Number pages" id="pages">
+                <button type="submit" class="btn" id="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="right">
+        <h2>Existing library</h2>
+        <h3>Check out the books we've got in store!</h3>
+        <div class="card-area">
+        </div>
+    </div>
+    <dialog open>
+        <p>Greetings, one and all!</p>
+        <form method="dialog">
+          <button>OK</button>
+        </form>
+      </dialog>
+</body>
+</html>
